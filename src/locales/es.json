@@ -31,8 +31,8 @@
 
   },
   "validations": {
-    "required": "Este campo es obligatorio.",
-    "email": "Debe ser un correo electrónico válido.",
+    "required": "El campo {field} es obligatorio.",
+    "email": "El campo {field} debe ser un correo válido.",
     "min": "Debe tener al menos {min} caracteres.",
     "max": "No debe tener más de {max} caracteres.",
     "between": "Debe estar entre {min} y {max} caracteres.",
@@ -53,5 +53,9 @@
     "unique": "Este valor ya está registrado.",
     "accepted": "Debe ser aceptado.",
     "boolean": "Debe ser verdadero o falso."
+  },
+  "fields": {
+    "email": "Correo electrónico",
+    "password": "Contraseña"
   }
 }

@@ -32,7 +32,7 @@
           </p>
         </div>
         <div class="w-full mb-5">
-          <Form :validation-schema="loginSchema" @submit="send" class="w-full mb-5 px-5 lg:px-0">
+          <Form :validation-schema="forgotPasswordSchema" @submit="send" class="w-full mb-5 px-5 lg:px-0">
             <div class="mb-4">
               <Field name="email" v-slot="{ field, errorMessage }">
                 <BaseTextInput
@@ -44,7 +44,7 @@
                     icon-height="20px"
                     type="email"
                     :placeholder="t('components.forgot_password.email_placeholder')"
-                    :error-message="t(errorMessage || '')"
+                    :error-message="translateError(errorMessage)"
                 />
               </Field>
             </div>
@@ -72,8 +72,9 @@ import BaseTextInput from '@/components/global/inputs/BaseTextInput.vue'
 import BaseButton from '@/components/global/buttons/BaseButton.vue'
 import { useI18n } from 'vue-i18n'
 import {useRouter} from 'vue-router'
-import {loginSchema} from "@/validations/loginSchema.ts";
-import {Field, Form} from "vee-validate";
+import { forgotPasswordSchema } from '@/validations/forgotPasswordSchema.ts'
+import { Field, Form } from 'vee-validate'
+import { translateError } from '@/helpers/translateError'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -81,6 +82,7 @@ const router = useRouter()
 const send = (values: any) => {
   console.log(values)
 }
+
 </script>
 
 <style scoped>

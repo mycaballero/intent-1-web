@@ -1,12 +1,11 @@
 import * as yup from 'yup'
+import { makeMessage } from '@/helpers/validationMessage'
 
 export const loginSchema = yup.object({
     email: yup.string()
-        .required('validations.required')
-        .email('validations.email'),
+        .required(({ path }) => makeMessage('validations.required', path ))
+        .email(({ path}) => makeMessage('validations.email', path )),
     password: yup.string()
         .required('validations.required')
-        .min(8, ({ min }) => ({ key: 'validations.min', values: { min } })),
-    number: yup.string()
-        .required('validations.required')
+        .min(8, ({ min, path}) => makeMessage('validations.min', path, { min })),
 })

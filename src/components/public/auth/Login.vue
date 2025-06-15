@@ -36,7 +36,7 @@
                   v-bind="field"
                   input-class="w-10/12 text-gray-400"
                   :placeholder="t('components.login.email')"
-                  :error-message="t(errorMessage || '')"
+                  :error-message="translateError(errorMessage)"
                   icon="ic:baseline-person-outline"
                   icon-class="text-gray-400"
                   icon-width="20px"
@@ -52,9 +52,7 @@
                   type="password"
                   input-class="w-10/12 text-gray-400"
                   :placeholder="t('components.login.password')"
-                  :error-message="typeof errorMessage === 'object'
-                    ? t(errorMessage.key, errorMessage.values)
-                    : t(errorMessage || '')"
+                  :error-message="translateError(errorMessage)"
                   icon="ic:outline-lock"
                   icon-class="text-gray-400"
                   icon-width="20px"
@@ -95,6 +93,7 @@ import { Form, Field } from 'vee-validate'
 import { loginSchema } from '@/validations/loginSchema'
 import BaseTextInput from '@/components/global/inputs/BaseTextInput.vue'
 import BaseButton from '@/components/global/buttons/BaseButton.vue'
+import { translateError } from '@/helpers/translateError'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -103,4 +102,5 @@ const onSubmit = (values: any) => {
   console.log('Datos enviados:', values)
   // Aquí puedes llamar a tu API
 }
+
 </script>
