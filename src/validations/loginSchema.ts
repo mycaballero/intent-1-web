@@ -6,6 +6,6 @@ export const loginSchema = yup.object({
         .required(({ path }) => makeMessage('validations.required', path ))
         .email(({ path}) => makeMessage('validations.email', path )),
     password: yup.string()
-        .required('validations.required')
-        .min(8, ({ min, path}) => makeMessage('validations.min', path, { min })),
+        .required(({ path }) => makeMessage('validations.required', path))
+        .min(8, ({ min, path }) => makeMessage('validations.min', path, { min })),
 })

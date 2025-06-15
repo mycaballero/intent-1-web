@@ -94,13 +94,30 @@ import { loginSchema } from '@/validations/loginSchema'
 import BaseTextInput from '@/components/global/inputs/BaseTextInput.vue'
 import BaseButton from '@/components/global/buttons/BaseButton.vue'
 import { translateError } from '@/helpers/translateError'
+import {ref} from "vue"
 
 const { t } = useI18n()
 const router = useRouter()
 
-const onSubmit = (values: any) => {
-  console.log('Datos enviados:', values)
-  // Aquí puedes llamar a tu API
+interface LoginForm {
+  email: string
+  password: string
+}
+
+const loading = ref(false)
+const error = ref<string | null>(null)
+
+const onSubmit = async ( values: LoginForm) => {
+  loading.value = true
+  error.value = null
+  try {
+    console.log('Form submitted:', values)
+    // Llama a la API de autenticación aquí
+  } catch (e) {
+    error.value = t('components.login.error')
+  } finally {
+    loading.value = false
+  }
 }
 
 </script>
