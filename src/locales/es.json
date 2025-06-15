@@ -1,0 +1,57 @@
+{
+  "general": {
+    "welcome": "Bienvenido",
+    "yes": "Si",
+    "no": "no",
+    "exit": "Salir"
+  },
+  "components": {
+    "login": {
+      "banner_text": "Administra tus edificios y conjuntos residenciales de manera eficiente y sencilla.",
+      "credentials": "Ingresa tus credenciales para continuar",
+      "document": "Documento",
+      "email": "Correo electrónico",
+      "login": "Iniciar sesión",
+      "password": "Contraseña",
+      "residential_management": "Gestión residencial",
+      "forget_password": "¿Olvidaste tu contraseña?",
+      "create_account": "Crear Cuenta"
+    },
+    "forgot_password": {
+      "subtitle": "Recuperación de cuenta.",
+      "instructions": "Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.",
+      "email_placeholder":  "Correo de recuperación",
+      "send": "Enviar",
+      "back_to_login":  "Volver al inicio"
+    }
+  },
+  "routes": {
+    "login": "Iniciar Sesión",
+    "forgot_password": "Recuperar Contraseña"
+
+  },
+  "validations": {
+    "required": "Este campo es obligatorio.",
+    "email": "Debe ser un correo electrónico válido.",
+    "min": "Debe tener al menos {min} caracteres.",
+    "max": "No debe tener más de {max} caracteres.",
+    "between": "Debe estar entre {min} y {max} caracteres.",
+    "confirmed": "Los valores no coinciden.",
+    "numeric": "Debe ser un número.",
+    "digits": "Debe tener exactamente {length} dígitos.",
+    "alpha": "Solo puede contener letras.",
+    "alpha_num": "Solo puede contener letras y números.",
+    "same": "Este campo debe coincidir con {target}.",
+    "url": "Debe ser una URL válida.",
+    "regex": "Formato inválido.",
+    "integer": "Debe ser un número entero.",
+    "phone": "Debe ser un número de teléfono válido.",
+    "password_strength": "La contraseña debe incluir una mayúscula, un número y un carácter especial.",
+    "date": "Debe ser una fecha válida.",
+    "after": "Debe ser una fecha posterior a {date}.",
+    "before": "Debe ser una fecha anterior a {date}.",
+    "unique": "Este valor ya está registrado.",
+    "accepted": "Debe ser aceptado.",
+    "boolean": "Debe ser verdadero o falso."
+  }
+}
