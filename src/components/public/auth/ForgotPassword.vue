@@ -74,13 +74,16 @@ import { useI18n } from 'vue-i18n'
 import {useRouter} from 'vue-router'
 import { forgotPasswordSchema } from '@/validations/forgotPasswordSchema.ts'
 import { Field, Form } from 'vee-validate'
-import { translateError } from '@/helpers/translateError'
+import { translateError } from '@/helpers/translateValidationError .ts'
 
 const { t } = useI18n()
 const router = useRouter()
 
 const send = (values: any) => {
-  console.log(values)
+  router.push({
+    name: 'change_password',
+    query: { email: values.email }
+  })
 }
 
 </script>

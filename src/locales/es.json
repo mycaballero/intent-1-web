@@ -3,7 +3,8 @@
     "welcome": "Bienvenido",
     "yes": "Si",
     "no": "no",
-    "exit": "Salir"
+    "exit": "Salir",
+    "update": "Actualizar"
   },
   "components": {
     "login": {
@@ -23,12 +24,17 @@
       "email_placeholder":  "Correo de recuperación",
       "send": "Enviar",
       "back_to_login":  "Volver al inicio"
+    },
+    "change_password": {
+      "title": "Cambiar contraseña",
+      "new_password": "Nueva contraseña",
+      "confirm_password": "Confirmar contraseña"
     }
   },
   "routes": {
     "login": "Iniciar Sesión",
-    "forgot_password": "Recuperar Contraseña"
-
+    "forgot_password": "Recuperar Contraseña",
+    "change_password": "Cambiar Contraseña"
   },
   "validations": {
     "required": "El campo {field} es obligatorio.",
@@ -52,10 +58,12 @@
     "before": "Debe ser una fecha anterior a {date}.",
     "unique": "Este valor ya está registrado.",
     "accepted": "Debe ser aceptado.",
-    "boolean": "Debe ser verdadero o falso."
+    "boolean": "Debe ser verdadero o falso.",
+    "match": "El campo {field} no coincide con la contraseña."
   },
   "fields": {
     "email": "Correo electrónico",
-    "password": "Contraseña"
+    "password": "Contraseña",
+    "confirm_password": "Confirmación de contraseña"
   }
 }

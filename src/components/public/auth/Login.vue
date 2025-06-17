@@ -93,7 +93,7 @@ import { Form, Field } from 'vee-validate'
 import { loginSchema } from '@/validations/loginSchema'
 import BaseTextInput from '@/components/global/inputs/BaseTextInput.vue'
 import BaseButton from '@/components/global/buttons/BaseButton.vue'
-import { translateError } from '@/helpers/translateError'
+import { translateError } from '@/helpers/translateValidationError .ts'
 import {ref} from "vue"
 
 const { t } = useI18n()
