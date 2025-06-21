@@ -54,30 +54,80 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-src/
-├── assets/                     # Static files (images, SVGs, etc.)
-├── components/                # Reusable Vue components
-│   ├── global/                # Shared and base components
-│   │   ├── animations/        # Animation helpers and base motion component
-│   │   ├── buttons/           # Reusable buttons
-│   │   └── inputs/            # Custom input fields
-│   ├── private/               # Components for authenticated views
-│   └── public/                # Public components (unauthenticated views)
-│       └── auth/              # Login, password recovery, etc.
-├── helpers/                   # General-purpose utility functions
-├── layout/                    # Reusable layout components
-├── locales/                   # i18n translation files (e.g., `es.json`, `en.json`)
-├── middleware/                # Custom route middleware functions
-├── plugins/                   # Global plugins (e.g., useFetch)
-├── routes/                    # Vue Router configuration and route guards
-├── store/                     # Pinia global state stores
-├── styles/                    # Global styling and animation setup
-│   └── animations/            # Animation variants and configurations
-├── utils/                     # General utilities and constants
-├── validations/               # Validation schemas using Yup + Vee-Validate
-├── App.vue                    # Root Vue component
-├── main.ts                    # Application entry point
-└── vite-env.d.ts              # Global type declarations for Vite
+├── index.html                          # Main HTML file that mounts the Vue app
+├── package.json                        # Project metadata, dependencies, and scripts
+├── tsconfig.app.json                   # TypeScript configuration for the application
+├── tsconfig.json                       # Base TypeScript configuration
+├── tsconfig.node.json                  # TypeScript config for Node environment (used by Vite/tools)
+├── vite.config.ts                      # Vite configuration file
+│
+├── public/                             # Static assets served directly without processing
+│   └── images/                         # Public images (e.g. backgrounds, logos)
+│
+└── src/                                # Main application source code
+    ├── App.vue                         # Root Vue component
+    ├── main.ts                         # Application entry point (mounts Vue app)
+    ├── style.css                       # Global styles (Tailwind CSS or other base styles)
+    ├── vite-env.d.ts                   # Global type declarations for Vite
+    │
+    ├── assets/                         # Static assets imported via components (e.g., images, icons)
+    │
+    ├── components/                     # All Vue components
+    │   ├── global/                     # Global components used across the app
+    │   │   ├── animations/             # Motion-V base wrapper component
+    │   │   │   └── BaseMotion.vue
+    │   │   ├── buttons/                # Reusable button components
+    │   │   │   └── BaseButton.vue
+    │   │   └── inputs/                 # Custom input fields
+    │   │       └── BaseTextInput.vue
+    │   └── public/                     # Public (unauthenticated) components
+    │       └── auth/                   # Authentication views
+    │           ├── ChangePassword.vue
+    │           ├── ForgotPassword.vue
+    │           └── Login.vue
+    │
+    ├── helpers/                        # General utility functions
+    │   ├── translateValidationError.ts # Translates VeeValidate error messages for i18n
+    │   └── validationMessage.ts        # Custom error message logic for Yup + i18n
+    │
+    ├── layout/                         # Page layout wrappers (e.g., GuestLayout)
+    │   ├── GuestLayout.vue
+    │   └── index.ts                    # Central layout exports
+    │
+    ├── locales/                        # vue-i18n translation files
+    │   └── es.json                     # Spanish language translation
+    │
+    ├── middleware/                     # Custom route middleware functions
+    │   ├── auth.ts                     # Requires authentication
+    │   ├── guest.ts                    # Restricts access to guests only
+    │   ├── MiddlewareContext.ts        # Type definitions for route context
+    │   └── middlewarePipeline.ts       # Composable to chain multiple middleware
+    │
+    ├── plugins/                        # Custom plugin setups
+    │   ├── i18n.ts                     # Initializes vue-i18n
+    │   ├── useFetch.ts                 # Custom fetch composable
+    │   └── vee-validate.ts             # Initializes vee-validate with config
+    │
+    ├── routes/                         # Vue Router configuration
+    │   └── router.ts                   # Route definitions + guards + middleware
+    │
+    ├── store/                          # Pinia state management
+    │   └── auth.store.ts               # Authentication state: user, tokens, etc.
+    │
+    ├── styles/                         # Style configuration
+    │   └── animations/                 # Central animation system using Motion-V
+    │       ├── helpers.ts              # Animation helpers (e.g., stagger, delay)
+    │       ├── index.ts                # Animation exports
+    │       ├── types.ts                # MotionVariant type definitions
+    │       └── variants/               # Grouped animation variants
+    │           ├── fade.ts             # Fade animations
+    │           ├── slide.ts            # Slide-in/out animations
+    │           └── zoom.ts             # Zoom effects
+    │
+    └── validations/                    # Yup validation schemas
+        ├── changePasswordSchema.ts
+        ├── forgotPasswordSchema.ts
+        └── loginSchema.ts
 
 ```
 
@@ -119,7 +169,7 @@ This project uses [`motion-v`](https://motion.unovue.com/components/motion) for 
 - 👥 Role-based authentication system
 - 🔔 Notification system (UI & backend-driven)
 - 🏠 Admin panel for both residents and administrators
-- 📱 Progressive Web App (PWA) support and responsive mobile version
+- 📱 Flutter App support and responsive mobile version
 
 ---
 

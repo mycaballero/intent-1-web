@@ -12,7 +12,7 @@ import { computed, defineProps } from 'vue'
 import {
   fadeIn, fadeInUp,
   fadeSlideLeft, fadeSlideRight,
-  zoomIn, staggerContainer,
+  zoomIn, staggerContainer, slideRight,
   type MotionVariant
 } from '@/styles/animations'
 
@@ -30,6 +30,7 @@ const variantMap = {
   fadeInUp,
   fadeSlideLeft,
   fadeSlideRight,
+  slideRight,
   zoomIn,
   staggerContainer
 }
