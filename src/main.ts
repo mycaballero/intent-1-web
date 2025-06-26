@@ -3,8 +3,8 @@ import './style.css'
 import App from './App.vue'
 import router from './routes/router'
 import { i18n } from './plugins/i18n'
-import {createPinia} from "pinia"
-import {useAuthStore} from './store/auth.store'
+import { createPinia } from "pinia"
+import { useAuthStore } from './stores/auth.store'
 import useFetch from './plugins/useFetch'
 import { setupVeeValidateI18n } from './plugins/vee-validate'
 

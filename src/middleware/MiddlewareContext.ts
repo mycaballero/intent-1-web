@@ -6,4 +6,5 @@ export interface MiddlewareContext {
     from: RouteLocationNormalized
     next: NavigationGuardNext
     router: Router
+    store: any
 }

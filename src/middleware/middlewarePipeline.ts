@@ -1,15 +1,22 @@
-import type {MiddlewareContext} from "./MiddlewareContext.ts";
+import type { MiddlewareContext } from './MiddlewareContext'
+import type { Middleware } from './Middleware'
 
-function middlewarePipeline (context: MiddlewareContext , middleware: [], index: number) {
-    const nextMiddleware : any = middleware[index]
+function middlewarePipeline(
+    context: MiddlewareContext,
+    middleware: Middleware[],
+    index: number
+) {
+    const nextMiddleware: Middleware | undefined = middleware[index]
 
-    if(!nextMiddleware){
+    if (!nextMiddleware) {
         return context.next
     }
 
     return () => {
         const nextPipeline = middlewarePipeline(
-            context, middleware, index + 1
+            context,
+            middleware,
+            index + 1
         )
         nextMiddleware({ ...context, next: nextPipeline })
     }

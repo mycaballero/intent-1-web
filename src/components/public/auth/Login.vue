@@ -86,12 +86,21 @@ import { loginSchema } from '@/validations/loginSchema'
 import BaseTextInput from '@/components/global/inputs/BaseTextInput.vue'
 import BaseButton from '@/components/global/buttons/BaseButton.vue'
 import { translateError } from '@/helpers/translateValidationError.ts'
-import {ref} from 'vue'
+import { inject, ref } from 'vue'
 import BaseDesktopBanner from '@/components/global/visual/BaseDesktopBanner.vue'
 import BaseMotion from '@/components/global/animations/BaseMotion.vue'
+import { useAuthStore } from '@/stores/auth.store'
+import { LOGIN_URL } from '@/constants/urlConstants'
 
 const { t } = useI18n()
 const router = useRouter()
+const authStore = useAuthStore()
+type UseFetchType = (url: string, options?: any) => {
+  response: Response | null
+  data: any
+  json: () => Promise<any>
+}
+const useFetch = inject('useFetchDefault') as UseFetchType
 
 interface LoginForm {
   email: string
@@ -104,13 +113,28 @@ const error = ref<string | null>(null)
 const onSubmit: SubmissionHandler<LoginForm> = async ( values: LoginForm) => {
   loading.value = true
   error.value = null
-
   try {
-    console.log('Form submitted:', values)
+    const { response, data } = await useFetch(LOGIN_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }).json()
+    if (response.value.ok) {
+      authStore.setToken(data.value.token)
+      authStore.setUser(data.value.user)
+      await router.push({name: 'home'})
+    } else {
+      error.value = t('components.login.error')
+    }
   } catch (e) {
     error.value = t('components.login.error')
   } finally {
     loading.value = false
+    authStore.setToken('1234567890') //#TODO For testing purposes, remove in production
+    authStore.setUser({}) //#TODO For testing purposes, remove in production
+    await router.push({name: 'home'}) //#TODO For testing purposes, remove in production
   }
 }
 

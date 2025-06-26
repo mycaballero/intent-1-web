@@ -1,19 +1,11 @@
-import {createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import auth from '@/middleware/auth'
 import guest from '@/middleware/guest'
 import middlewarePipeline from '@/middleware/middlewarePipeline'
-import {useAuthStore} from '@/store/auth.store.ts'
+import { useAuthStore } from '@/stores/auth.store.ts'
 import { i18n } from '@/plugins/i18n.ts'
-import type { NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
-
-interface MiddlewareContext {
-  to: RouteLocationNormalized
-  from: RouteLocationNormalized
-  next: NavigationGuardNext
-  store: ReturnType<typeof useAuthStore>
-  router: typeof router
-}
-
-type Middleware = (context: MiddlewareContext) => void
+import type { RouteRecordRaw } from 'vue-router'
+import type { Middleware } from '@/middleware/Middleware'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -57,6 +49,18 @@ const routes: RouteRecordRaw[] = [
       ],
       layout: 'GuestLayout',
       title: 'routes.change_password'
+    }
+  },
+  {
+    name: 'home',
+    path: '/',
+    component: () => import('@/components/private/Home/Home.vue'),
+    meta: {
+      middleware: [
+          auth
+      ],
+      layout: 'AuthLayout',
+      title: 'routes.home'
     }
   }
 ]

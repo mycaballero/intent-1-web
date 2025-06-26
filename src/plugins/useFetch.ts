@@ -1,11 +1,11 @@
-import {createFetch} from '@vueuse/core'
+import { createFetch } from '@vueuse/core'
 
-const handleErrors = async (status: number | undefined, store: any, router: any) :Promise<void> => {
+const handleErrors = async (status: number | undefined, store: any, router: any): Promise<void> => {
     switch (status) {
         case 401:
             store.logout()
-            await router.push({name: 'login'})
-            break;
+            await router.push({ name: 'login' })
+            break
     }
 }
 
@@ -14,10 +14,13 @@ export default {
         const useDefaultCreateFetch = createFetch({
             baseUrl: params.authStore.tk,
             options: {
-                async beforeFetch({ options}) {
-                    options.headers.Authorization  = `Bearer ${params.authStore.tk}`
+                async beforeFetch({ options }) {
+                    if (!options.headers) options.headers = {}
+                    // @ts-ignore
+                    options.headers.Authorization = `Bearer ${params.authStore.tk}`
+                    // @ts-ignore
                     options.headers.Accept = 'application/json'
-                    return {options}
+                    return { options }
                 },
                 async onFetchError(ctx) {
                     await handleErrors(ctx.response?.status, params.authStore, params.router)
@@ -28,6 +31,6 @@ export default {
                 mode: 'cors',
             },
         })
-        app.provide("useFetchDefault", useDefaultCreateFetch);
+        app.provide('useFetchDefault', useDefaultCreateFetch)
     }
-};
+}
