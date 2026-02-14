@@ -52,6 +52,18 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    name: 'reset_password',
+    path: '/reset-password',
+    component: () => import('@/components/public/auth/ChangePassword.vue'),
+    meta: {
+      middleware: [
+        guest
+      ],
+      layout: 'GuestLayout',
+      title: 'routes.change_password'
+    }
+  },
+  {
     name: 'home',
     path: '/',
     component: () => import('@/components/private/Home/Home.vue'),

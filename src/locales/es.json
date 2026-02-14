@@ -1,70 +1,76 @@
 {
-  "components": {
-    "change_password": {
-      "confirm_password": "Confirmar contraseña",
-      "new_password": "Nueva contraseña",
-      "title": "Cambiar contraseña"
+    "components": {
+        "change_password": {
+            "confirm_password": "Confirmar contraseña",
+            "new_password": "Nueva contraseña",
+            "title": "Cambiar contraseña",
+            "success": "Tu contraseÃ±a ha sido restablecida.",
+            "error": "No se pudo restablecer la contraseÃ±a. El enlace puede haber expirado.",
+            "new_password_instructions": "Ingresa tu nueva contraseÃ±a."
+        },
+        "forgot_password": {
+            "back_to_login": "Volver al inicio",
+            "email_placeholder": "Correo de recuperación",
+            "instructions": "Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.",
+            "send": "Enviar",
+            "subtitle": "Recuperación de cuenta.",
+            "success": "Se ha enviado el enlace de recuperaciÃ³n a tu correo.",
+            "error": "No se pudo enviar el enlace. Verifica el correo e intenta nuevamente."
+        },
+        "login": {
+            "banner_text": "Administra tus edificios y conjuntos residenciales de manera eficiente y sencilla.",
+            "credentials": "Ingresa tus credenciales para continuar",
+            "document": "Documento",
+            "email": "Correo electrónico",
+            "error": "Algo sucedió, verifica tus credenciales e intenta nuevamente.",
+            "login": "Iniciar sesión",
+            "password": "Contraseña",
+            "residential_management": "Gestión residencial",
+            "forget_password": "¿Olvidaste tu contraseña?",
+            "create_account": "Crear Cuenta"
+        }
     },
-    "forgot_password": {
-      "back_to_login":  "Volver al inicio",
-      "email_placeholder":  "Correo de recuperación",
-      "instructions": "Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.",
-      "send": "Enviar",
-      "subtitle": "Recuperación de cuenta."
+    "fields": {
+        "email": "Correo electrónico",
+        "confirm_password": "Confirmación de contraseña",
+        "password": "Contraseña"
     },
-    "login": {
-      "banner_text": "Administra tus edificios y conjuntos residenciales de manera eficiente y sencilla.",
-      "credentials": "Ingresa tus credenciales para continuar",
-      "document": "Documento",
-      "email": "Correo electrónico",
-      "error": "Algo sucedió, verifica tus credenciales e intenta nuevamente.",
-      "login": "Iniciar sesión",
-      "password": "Contraseña",
-      "residential_management": "Gestión residencial",
-      "forget_password": "¿Olvidaste tu contraseña?",
-      "create_account": "Crear Cuenta"
+    "general": {
+        "exit": "Salir",
+        "welcome": "Bienvenido",
+        "no": "no",
+        "update": "Actualizar",
+        "yes": "Si"
+    },
+    "routes": {
+        "change_password": "Cambiar Contraseña",
+        "forgot_password": "Recuperar Contraseña",
+        "login": "Iniciar Sesión",
+        "home": "Inicio"
+    },
+    "validations": {
+        "accepted": "Debe ser aceptado.",
+        "after": "Debe ser una fecha posterior a {date}.",
+        "alpha": "Solo puede contener letras.",
+        "alpha_num": "Solo puede contener letras y números.",
+        "before": "Debe ser una fecha anterior a {date}.",
+        "between": "Debe estar entre {min} y {max} caracteres.",
+        "boolean": "Debe ser verdadero o falso.",
+        "confirmed": "Los valores no coinciden.",
+        "date": "Debe ser una fecha válida.",
+        "digits": "Debe tener exactamente {length} dígitos.",
+        "email": "El campo {field} debe ser un correo válido.",
+        "integer": "Debe ser un número entero.",
+        "match": "El campo {field} no coincide con la contraseña.",
+        "max": "No debe tener más de {max} caracteres.",
+        "min": "Debe tener al menos {min} caracteres.",
+        "numeric": "Debe ser un número.",
+        "password_strength": "La contraseña debe incluir una mayúscula, un número y un carácter especial.",
+        "phone": "Debe ser un número de teléfono válido.",
+        "regex": "Formato inválido.",
+        "required": "El campo {field} es obligatorio.",
+        "same": "Este campo debe coincidir con {target}.",
+        "url": "Debe ser una URL válida.",
+        "unique": "Este valor ya está registrado."
     }
-  },
-  "fields": {
-    "email": "Correo electrónico",
-    "confirm_password": "Confirmación de contraseña",
-    "password": "Contraseña"
-  },
-  "general": {
-  "exit": "Salir",
-  "welcome": "Bienvenido",
-  "no": "no",
-  "update": "Actualizar",
-  "yes": "Si"
-},
-  "routes": {
-    "change_password": "Cambiar Contraseña",
-    "forgot_password": "Recuperar Contraseña",
-    "login": "Iniciar Sesión"
-  },
-  "validations": {
-    "accepted": "Debe ser aceptado.",
-    "after": "Debe ser una fecha posterior a {date}.",
-    "alpha": "Solo puede contener letras.",
-    "alpha_num": "Solo puede contener letras y números.",
-    "before": "Debe ser una fecha anterior a {date}.",
-    "between": "Debe estar entre {min} y {max} caracteres.",
-    "boolean": "Debe ser verdadero o falso.",
-    "confirmed": "Los valores no coinciden.",
-    "date": "Debe ser una fecha válida.",
-    "digits": "Debe tener exactamente {length} dígitos.",
-    "email": "El campo {field} debe ser un correo válido.",
-    "integer": "Debe ser un número entero.",
-    "match": "El campo {field} no coincide con la contraseña.",
-    "max": "No debe tener más de {max} caracteres.",
-    "min": "Debe tener al menos {min} caracteres.",
-    "numeric": "Debe ser un número.",
-    "password_strength": "La contraseña debe incluir una mayúscula, un número y un carácter especial.",
-    "phone": "Debe ser un número de teléfono válido.",
-    "regex": "Formato inválido.",
-    "required": "El campo {field} es obligatorio.",
-    "same": "Este campo debe coincidir con {target}.",
-    "url": "Debe ser una URL válida.",
-    "unique": "Este valor ya está registrado."
-  }
 }

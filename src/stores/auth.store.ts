@@ -11,13 +11,19 @@ export const useAuthStore = defineStore('users', {
         tk: useLocalStorage('auth/tk',null)
     }),
     actions: {
-        setToken(token: number | null ): void {
-            useLocalStorage('auth/tk',token)
-            this.tk = token
+        setToken(token: string | null): void {
+            if (this.tk && typeof this.tk === 'object' && 'value' in this.tk) {
+                ;(this.tk as Ref<string | null>).value = token
+            } else {
+                this.tk = token as any
+            }
         },
         setUser(user: object | null): void {
-            useLocalStorage('auth/user',user)
-            this.user = user
+            if (this.user && typeof this.user === 'object' && 'value' in this.user) {
+                ;(this.user as Ref<object | null>).value = user
+            } else {
+                this.user = user as any
+            }
         },
         logout() :void{
             this.setUser(null)
@@ -25,8 +31,12 @@ export const useAuthStore = defineStore('users', {
         }
     },
     getters: {
-        isAuthenticated(state: object | any ): Boolean {
-            return !!state.tk?.length
+        token(state: object | any): string | null {
+            const tk = state.tk
+            return typeof tk === 'object' && tk && 'value' in tk ? tk.value : tk
+        },
+        isAuthenticated(): Boolean {
+            return !!this.token?.length
         }
     }
 });

@@ -9,10 +9,12 @@ const handleErrors = async (status: number | undefined, store: any, router: any)
     }
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || import.meta.env.API_URL || 'http://localhost:8000'
+
 export default {
     install: (app: any, params: any): void => {
         const useDefaultCreateFetch = createFetch({
-            baseUrl: params.authStore.tk,
+            baseUrl: `${API_BASE}/api`,
             options: {
                 async beforeFetch({ options }) {
                     if (!options.headers) options.headers = {}

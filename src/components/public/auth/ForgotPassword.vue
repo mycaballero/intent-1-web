@@ -28,8 +28,16 @@
                     type="email"
                     :placeholder="t('components.forgot_password.email_placeholder')"
                     :error-message="translateError(errorMessage)"
+                    :disabled="loading"
                 />
               </Field>
+            </BaseMotion>
+
+            <BaseMotion v-if="error" variant="fadeIn" class="mb-4">
+              <p class="text-red-500 text-sm text-center">{{ error }}</p>
+            </BaseMotion>
+            <BaseMotion v-if="success" variant="fadeIn" class="mb-4">
+              <p class="text-green-600 text-sm text-center">{{ success }}</p>
             </BaseMotion>
 
             <BaseMotion variant="fadeIn">
@@ -69,18 +77,38 @@ import { translateError } from '@/helpers/translateValidationError.ts'
 import BaseMotion from '@/components/global/animations/BaseMotion.vue'
 import BaseDesktopBanner from '@/components/global/visual/BaseDesktopBanner.vue'
 import { ref } from 'vue'
-
+import { FORGOT_PASSWORD_URL } from '@/constants/urlConstants'
 
 const { t } = useI18n()
 const router = useRouter()
 const error = ref<string | null>(null)
+const success = ref<string | null>(null)
 const loading = ref(false)
 
-const send = (values: any) => {
+const send = async (values: { email: string }) => {
   error.value = null
-  router.push({
-    name: 'change_password',
-    query: { email: values.email }
-  })
+  success.value = null
+  loading.value = true
+  try {
+    const response = await fetch(FORGOT_PASSWORD_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ email: values.email }),
+    })
+    const data = await response.json()
+
+    if (response.ok) {
+      success.value = data.message || t('components.forgot_password.success')
+    } else {
+      error.value = data.message || t('components.forgot_password.error')
+    }
+  } catch {
+    error.value = t('components.forgot_password.error')
+  } finally {
+    loading.value = false
+  }
 }
 </script>
