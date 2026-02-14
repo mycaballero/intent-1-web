@@ -1,0 +1,27 @@
+---
+description: Reglas para tests en el frontend (Vitest + Testing Library)
+globs: src/tests/**/*.ts, src/**/*.spec.ts
+alwaysApply: false
+---
+# Testing (Frontend)
+
+## Independencia de i18n
+
+- **No depender de textos traducidos** en los tests. Los textos vienen de i18n y pueden cambiar de idioma o de copia.
+- Usar **`data-testid`** en los componentes para los elementos que los tests necesitan localizar.
+- En los tests, usar **`screen.getByTestId('...')`** (o `queryByTestId`) en lugar de `getByText()` con cadenas traducidas.
+
+## Convención data-testid
+
+- Prefijo por vista o componente: `login-welcome`, `login-submit`, `login-forgot-password-link`.
+- Solo en elementos que los tests necesiten encontrar; no abusar.
+
+## Vitest
+
+- No usar matchers de `@testing-library/jest-dom` (p. ej. `toBeInTheDocument`) a menos que esté instalado y configurado en el setup.
+- Usar aserciones estándar de Vitest: `expect(...).toBeTruthy()`, `expect(...).toBeDefined()`, `document.body.contains(...)`.
+
+## Componentes con formularios
+
+- Proporcionar router, Pinia e i18n en `global.plugins` al hacer `render()` para que el componente funcione.
+- Preferir `getByTestId` para no acoplar el test al idioma ni a la copia de la UI.

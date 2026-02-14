@@ -34,10 +34,10 @@
             </BaseMotion>
 
             <BaseMotion v-if="error" variant="fadeIn" class="mb-4">
-              <p class="text-red-500 text-sm text-center">{{ error }}</p>
+              <p class="text-danger text-sm text-center">{{ error }}</p>
             </BaseMotion>
             <BaseMotion v-if="success" variant="fadeIn" class="mb-4">
-              <p class="text-green-600 text-sm text-center">{{ success }}</p>
+              <p class="text-success text-sm text-center">{{ success }}</p>
             </BaseMotion>
 
             <BaseMotion variant="fadeIn">

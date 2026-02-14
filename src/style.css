@@ -1,22 +1,40 @@
 @import "tailwindcss";
 
+/* Intent-1 design system (see .cursor/rules/ui-ux.mdc) */
 @theme {
-  --color-primary: #1A73E8; /*color Principal*/
-  --color-success: #22C55E;
+  /* Colors */
+  --color-primary: #1A73E8;
+  --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
+  --color-background-light: #FFFFFF;
+  --color-background-dark: #111827;
   --color-dark-1: #111827;
   --color-gray-1: #F3F4F6;
   --color-gray-2: #9CA3AF;
+  --color-gray-3: #6B7280;
+  --color-gray-8: #1F2937;
 
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 64rem;
+  /* Breakpoints: Mobile < 640px, Tablet 641–1024px, Desktop > 1024px */
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 64rem;   /* 1024px */
   --breakpoint-lg: 85rem;
   --breakpoint-xl: 120rem;
+
+  /* Typography (ui-ux: h1 32–36px, h2 24–28px, h3 20–22px, body 14–16px, inputs 14px) */
+  --font-size-h1: 2rem;      /* 32px */
+  --font-size-h2: 1.5rem;    /* 24px */
+  --font-size-h3: 1.25rem;  /* 20px */
+  --font-size-body: 1rem;    /* 16px */
+  --font-size-input: 0.875rem; /* 14px */
+
+  /* Preferred fonts: Inter, Roboto, Open Sans */
+  --font-family-sans: Inter, Roboto, "Open Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  font-family: Inter, sans-serif;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body);
   line-height: 1.5;
   font-weight: 400;
 
@@ -36,9 +54,18 @@ body {
   min-height: 100vh;
 }
 
+/* Heading scale per ui-ux */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: var(--font-size-h1);
+  line-height: 1.2;
+}
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: 1.3;
+}
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: 1.3;
 }
 
 

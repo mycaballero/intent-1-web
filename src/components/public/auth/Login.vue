@@ -7,7 +7,7 @@
           <div class="w-full lg:hidden mb-5 flex justify-center text-primary">
             <Icon icon="ic:outline-home" width="60px" height="60px" />
           </div>
-          <h5 class="w-full text-xl lg:text-2xl lg:text-start font-bold text-dark-1">
+          <h5 data-testid="login-welcome" class="w-full text-xl lg:text-2xl lg:text-start font-bold text-dark-1">
             {{ t('general.welcome') }}
           </h5>
           <p class="hidden lg:block text-gray-2 text-lg text-start">
@@ -53,7 +53,7 @@
                 {{ error }}
               </p>
             </BaseMotion>
-            <div>
+            <div data-testid="login-submit">
               <BaseButton
                   :text="t('components.login.login')"
                   class-button="w-78 h-12 bg-primary"
@@ -65,10 +65,10 @@
           </Form>
         </BaseMotion>
         <BaseMotion variant="fadeIn" class="w-full lg:flex">
-          <p class="w-full text-center text-primary hover:underline hover:cursor-pointer" @click="router.push('/forgot-password')">
+          <p data-testid="login-forgot-password-link" class="w-full text-center text-primary hover:underline hover:cursor-pointer" @click="router.push('/forgot-password')">
             {{ t('components.login.forget_password') }}
           </p>
-          <p class="w-full text-center text-primary hover:underline hover:cursor-pointer" @click="router.push('/register')">
+          <p data-testid="login-register-link" class="w-full text-center text-primary hover:underline hover:cursor-pointer" @click="router.push('/register')">
             {{ t('components.login.create_account') }}
           </p>
         </BaseMotion>
