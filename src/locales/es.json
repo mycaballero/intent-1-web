@@ -42,6 +42,16 @@
         "update": "Actualizar",
         "yes": "Si"
     },
+    "layout": {
+        "open_menu": "Abrir menú",
+        "close_menu": "Cerrar menú",
+        "expand_sidebar": "Expandir menú lateral",
+        "collapse_sidebar": "Contraer menú lateral",
+        "profile_menu": "Menú de perfil",
+        "theme": "Tema",
+        "theme_light": "Claro",
+        "theme_dark": "Oscuro"
+    },
     "routes": {
         "change_password": "Cambiar Contraseña",
         "forgot_password": "Recuperar Contraseña",
